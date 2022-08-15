@@ -2,26 +2,23 @@
 #include "sim.h"
 #include "light_detection.h"
 
+#define LIGHT_SENSOR_PIN_LT 9  // left top
+#define LIGHT_SENSOR_PIN_RT 10 // right top
+#define LIGHT_SENSOR_PIN_RB 11 // right bottom
+#define LIGHT_SENSOR_PIN_LB 12 // left bottom
+
+LightDetector lightDetector(LIGHT_SENSOR_PIN_LT, LIGHT_SENSOR_PIN_RT, LIGHT_SENSOR_PIN_RB, LIGHT_SENSOR_PIN_LB);
+
 void setup()
 {
   Serial.begin(9600);
   // initialize LED digital pin as an output.
   pinMode(LED_BUILTIN, OUTPUT);
   pingSim();
-  pingLightDetection();
 }
 
 void loop()
 {
-  // turn the LED on (HIGH is the voltage level)
-  digitalWrite(LED_BUILTIN, HIGH);
-
-  // wait for a second
-  delay(1000);
-
-  // turn the LED off by making the voltage LOW
-  digitalWrite(LED_BUILTIN, LOW);
-
-   // wait for a second
-  delay(1000);
+  LightDetectionResult lightDetectionResult = lightDetector.measure();
+  LightDetectionMovementResult movementPlot = lightDetector.plotMovement(lightDetectionResult);
 }
