@@ -1,5 +1,4 @@
 #include <Arduino.h>
-// code file, with actual implementation
 
 struct LightDetectionResult
 {
@@ -19,11 +18,13 @@ struct LightDetectionMovementResult
 
 class LightDetector
 {
-  int ltPin;
-  int rtPin;
-  int rbPin;
-  int lbPin;
+  private:
+    int ltPin;
+    int rtPin;
+    int rbPin;
+    int lbPin;
 
+public:
   LightDetector(int leftTopPin, int rightTopPin, int rightBottomPin, int leftBottomPin)
   {
     ltPin = leftTopPin;

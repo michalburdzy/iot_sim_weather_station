@@ -1,5 +1,3 @@
-// header file with type definitions
-
 struct LightDetectionResult
 {
   int leftTop;

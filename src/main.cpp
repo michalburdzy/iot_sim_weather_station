@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "sim.h"
-#include "light_detection.h"
+#include <LightDetector.h>
 
 #define LIGHT_SENSOR_PIN_LT 9  // left top
 #define LIGHT_SENSOR_PIN_RT 10 // right top
@@ -20,5 +20,6 @@ void setup()
 void loop()
 {
   LightDetectionResult lightDetectionResult = lightDetector.measure();
-  LightDetectionMovementResult movementPlot = lightDetector.plotMovement(lightDetectionResult);
+  // LightDetectionMovementResult movementPlot = lightDetector.plotMovement(lightDetectionResult);
+  lightDetector.plotMovement(lightDetectionResult);
 }
